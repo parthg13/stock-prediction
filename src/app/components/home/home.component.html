@@ -1,0 +1,8 @@
+<div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <p class="header-text">Dashboard</p>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <div class="profile-icon image-contain-fit" [matMenuTriggerFor]="menu"></div>
+</div>
+<router-outlet></router-outlet>

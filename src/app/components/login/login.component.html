@@ -1,0 +1,55 @@
+<div fxLayout="row" class="login-component">
+    <div fxFlex="50" fxHide.xs="true" class="left-login-container">
+        <div class="name">Project Name</div>
+    </div>
+    <div fxFlex="50" fxFlex.xs="100" style="position: relative;">
+        <div class="login-container" fxLayout="row" fxLayoutAlign="center center">
+            <ng-container *ngIf="!registerFlag; else registerSection">
+                <form [formGroup]="loginForm" (keyup.enter)="submitClicked()" fxFlex="60" fxFlex.xs="80" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
+                    <p class="login-text">Login</p>
+                    <mat-form-field>
+                        <mat-label>Email ID</mat-label>
+                        <input formControlName="email" matInput placeholder="Email ID">
+                        <mat-error *ngIf="email.invalid">Invalid Email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input formControlName="password" type="password" matInput placeholder="Password">
+                        <mat-error *ngIf="password.invalid">Invalid Password</mat-error>
+                    </mat-form-field>
+    
+                    <button class="submit-button" mat-raised-button color="primary" (click)="submitClicked()">Submit</button>
+                    <p class="register-text" (click)="registerFlag=!registerFlag;">Register now</p>
+                </form>
+            </ng-container>
+            
+            <ng-template #registerSection>
+                <form [formGroup]="registerForm" (keyup.enter)="registerClicked()" fxFlex="60" fxFlex.xs="80" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center">
+                    <p class="login-text"> <span class="arrow-back" (click)="registerFlag=false;">←</span> Register</p>
+                    <mat-form-field>
+                        <mat-label>Full Name</mat-label>
+                        <input formControlName="name" matInput placeholder="Full Name">
+                        <mat-error *ngIf="r_name.invalid">Invalid Name</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Email ID</mat-label>
+                        <input formControlName="email" matInput placeholder="Email ID">
+                        <mat-error *ngIf="r_email.invalid">Invalid Email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input formControlName="password" type="password" matInput placeholder="Password">
+                        <mat-error *ngIf="r_password.invalid">Invalid Password</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Confirm Password</mat-label>
+                        <input formControlName="cpassword" type="password" matInput placeholder="Re-enter Password">
+                        <mat-error *ngIf="r_cpassword.invalid">Invalid Password</mat-error>
+                    </mat-form-field>
+
+                    <button class="submit-button" mat-raised-button color="primary" (click)="registerClicked()">Register</button>
+                </form>
+            </ng-template>
+        </div>
+    </div>
+</div>
